@@ -48,6 +48,32 @@ export default function PublicoPage() {
   const todos = activo ? completo(puntajes, activo.id) : false;
   const total = activo ? totalDe(puntajes, activo.id) : 0;
 
+  // Máximo de dígitos entre los 3 jurados — todos usan el mismo tamaño
+  const maxDigitosJurados = Math.max(
+    ...[1, 2, 3].map((j) => {
+      const v = activo ? puntajeDe(puntajes, activo.id, j) : undefined;
+      return v !== undefined ? String(v).length : 1;
+    })
+  );
+
+  // Tamaño basado en dígitos: ancho de tarjeta ~20vw, cada dígito ocupa ~0.6em
+  // Se reserva margen para no cortarse nunca
+  function fuenteJurado(): string {
+    const d = maxDigitosJurados;
+    if (d <= 2) return "clamp(3.5rem, 10vw, 9rem)";
+    if (d === 3) return "clamp(3rem,  8vw, 7.5rem)";
+    if (d === 4) return "clamp(2.2rem, 5.5vw, 5.5rem)";
+    return              "clamp(1.8rem, 4.2vw, 4.2rem)";
+  }
+
+  function fuenteTotal(valor: number): string {
+    const d = String(valor).length;
+    if (d <= 2) return "clamp(3.5rem, 10vw, 9rem)";
+    if (d === 3) return "clamp(3rem,  8vw, 7.5rem)";
+    if (d === 4) return "clamp(2.2rem, 5.5vw, 5.5rem)";
+    return              "clamp(1.8rem, 4.2vw, 4.2rem)";
+  }
+
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-gradient-to-b from-black via-neutral-900 to-neutral-800 text-white">
 
@@ -56,7 +82,7 @@ export default function PublicoPage() {
 
         <img src="/images/logo-u.webp" alt="UNCP"
           className="w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-          style={{ height: "clamp(3rem, 12vh, 9rem)" }} />
+          style={{ height: "clamp(4rem, 16vh, 11rem)" }} />
 
         <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1 text-center overflow-hidden">
           <div className="whitespace-nowrap font-black uppercase text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
@@ -75,7 +101,7 @@ export default function PublicoPage() {
 
         <img src="/images/logo-direccion.webp" alt="DPSEC"
           className="w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-          style={{ height: "clamp(3rem, 14vh, 11rem)" }} />
+          style={{ height: "clamp(5.5rem, 22vh, 16rem)" }} />
       </header>
 
       {/* ── TÍTULO ── tamaño natural, no fijo */}
@@ -141,7 +167,7 @@ export default function PublicoPage() {
 
               <div className="flex min-h-0 flex-1 items-center justify-center">
                 {valor !== undefined ? (
-                  <p className="font-black text-white leading-none" style={{ fontSize: "clamp(3rem, 9vw, 8rem)" }}>{valor}</p>
+                  <p className="font-black text-white leading-none" style={{ fontSize: fuenteJurado(), lineHeight: 1.1 }}>{valor}</p>
                 ) : (
                   <span className="font-bold text-neutral-800" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>—</span>
                 )}
@@ -169,7 +195,7 @@ export default function PublicoPage() {
 
           <div className="flex min-h-0 flex-1 items-center justify-center">
             {todos ? (
-              <p className="font-black text-white drop-shadow-2xl leading-none" style={{ fontSize: "clamp(3rem, 9vw, 8rem)" }}>{total}</p>
+              <p className="font-black text-white drop-shadow-2xl leading-none" style={{ fontSize: fuenteTotal(total), lineHeight: 1.1 }}>{total}</p>
             ) : (
               <span className="font-bold text-neutral-800" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>—</span>
             )}

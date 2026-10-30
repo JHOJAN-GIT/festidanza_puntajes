@@ -7,7 +7,7 @@ export default function HeaderInstitucional({ className = "" }: { className?: st
         src="/images/logo-u.webp"
         alt="UNCP"
         className="w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-        style={{ height: "clamp(3rem, 12vh, 9rem)" }}
+        style={{ height: "clamp(4rem, 16vh, 11rem)" }}
       />
 
       <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1 overflow-hidden text-center">
@@ -35,7 +35,7 @@ export default function HeaderInstitucional({ className = "" }: { className?: st
         src="/images/logo-direccion.webp"
         alt="DPSEC"
         className="w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-        style={{ height: "clamp(3rem, 14vh, 11rem)" }}
+        style={{ height: "clamp(5.5rem, 22vh, 16rem)" }}
       />
     </header>
   );
