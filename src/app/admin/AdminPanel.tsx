@@ -249,7 +249,7 @@ export default function AdminPanel() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-neutral-900 to-neutral-800 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-black via-neutral-900 to-neutral-800 text-white">
       <HeaderInstitucional />
       <main className="p-6">
       <div className="mx-auto max-w-5xl space-y-6">

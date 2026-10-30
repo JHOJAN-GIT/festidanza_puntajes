@@ -1,43 +1,42 @@
-import type { CSSProperties } from "react";
-
 export default function HeaderInstitucional({ className = "" }: { className?: string }) {
   return (
     <header
-      className={`w-full border-b border-neutral-700 px-6 py-6 ${className}`}
-      style={{ fontFamily: "var(--font-cinzel)" } as CSSProperties}
+      className={`flex w-full shrink-0 items-center justify-between gap-2 border-b border-neutral-700 px-4 py-3 ${className}`}
     >
-      <div className="flex w-full items-center justify-between gap-4">
-        <img
-          src="/images/logo-u.webp"
-          alt="UNCP"
-          className="h-36 shrink-0 object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-        />
-        <div className="min-w-0 flex-1 text-center">
-          <div
-            className="whitespace-nowrap text-3xl font-black uppercase text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
-            style={{ letterSpacing: "0.35em" }}
-          >
-            UNIVERSIDAD NACIONAL DEL CENTRO DEL PERÚ
-          </div>
-          <div
-            className="mt-2 whitespace-nowrap text-3xl font-bold uppercase text-neutral-300 drop-shadow-[0_1px_8px_rgba(255,255,255,0.15)]"
-            style={{ letterSpacing: "0.3em" }}
-          >
-            Vicerrectorado Académico
-          </div>
-          <div
-            className="mt-1 whitespace-nowrap text-3xl font-bold uppercase text-neutral-200 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]"
-            style={{ letterSpacing: "0.25em" }}
-          >
-            Dirección de Proyección Social y Extensión Cultural
-          </div>
+      <img
+        src="/images/logo-u.webp"
+        alt="UNCP"
+        className="w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+        style={{ height: "clamp(3rem, 12vh, 9rem)" }}
+      />
+
+      <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1 overflow-hidden text-center">
+        <div
+          className="whitespace-nowrap font-black uppercase text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
+          style={{ fontFamily: "var(--font-cinzel)", fontSize: "clamp(0.65rem, 1.8vw, 1.9rem)", letterSpacing: "0.3em" }}
+        >
+          UNIVERSIDAD NACIONAL DEL CENTRO DEL PERÚ
         </div>
-        <img
-          src="/images/logo-direccion.webp"
-          alt="DPSEC"
-          className="h-44 shrink-0 object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-        />
+        <div
+          className="whitespace-nowrap font-bold uppercase text-neutral-300 drop-shadow-[0_1px_8px_rgba(255,255,255,0.15)]"
+          style={{ fontFamily: "var(--font-cinzel)", fontSize: "clamp(0.6rem, 1.5vw, 1.6rem)", letterSpacing: "0.28em" }}
+        >
+          Vicerrectorado Académico
+        </div>
+        <div
+          className="whitespace-nowrap font-bold uppercase text-neutral-200 drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]"
+          style={{ fontFamily: "var(--font-cinzel)", fontSize: "clamp(0.65rem, 1.7vw, 1.8rem)", letterSpacing: "0.2em" }}
+        >
+          Dirección de Proyección Social y Extensión Cultural
+        </div>
       </div>
+
+      <img
+        src="/images/logo-direccion.webp"
+        alt="DPSEC"
+        className="w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+        style={{ height: "clamp(3rem, 14vh, 11rem)" }}
+      />
     </header>
   );
 }
